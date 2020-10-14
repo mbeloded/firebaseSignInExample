@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "266456570605",
+    "firebase_url": "https://singlesigninfirestore.firebaseio.com",
+    "project_id": "singlesigninfirestore",
+    "storage_bucket": "singlesigninfirestore.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:266456570605:android:7aad0a54a4e61b71344ae4",
+        "android_client_info": {
+          "package_name": "com.example.single_sign_in_firestore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "266456570605-v9gjdi531298de9clios673pd1a6meee.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.single_sign_in_firestore",
+            "certificate_hash": "c89c1fdb5d3327c1c88251810b88ea679f07c0c2"
+          }
+        },
+        {
+          "client_id": "266456570605-aa14f06svt0f7kppjj2did5lls20ibv6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzsW8DMjgq3iPH3sjxwPgQZKxc_rRZaOI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "266456570605-aa14f06svt0f7kppjj2did5lls20ibv6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
