@@ -12,6 +12,17 @@ class InitGoogleSingleSignIn extends AuthEvent {
   List<Object> get props => null;
 }
 
+class InitGoogleSingleSignUpEvent extends AuthEvent {
+  final String data; // userToken
+
+  InitGoogleSingleSignUpEvent(
+      this.data,
+      );
+
+  @override
+  List<Object> get props => null;
+}
+
 class GoogleLogginInEvent extends AuthEvent {
   final String data; // userToken
 

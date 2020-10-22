@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:single_sign_in_firestore/common/utils.dart';
 import 'package:single_sign_in_firestore/injection_container.dart';
 import 'package:single_sign_in_firestore/presentation/bloc/auth_bloc/auth_bloc.dart';
 import 'package:single_sign_in_firestore/presentation/bloc/auth_bloc/auth_event.dart';
@@ -39,6 +40,9 @@ class _LoginPageState extends State<LoginPage> {
               _bloc.add(GoogleLogginInEvent(state.data));
             } else if (state is ErrorUserNotFoundState) {
               //show an alert here about do you want to register a new user ?
+              Utils.showRegistrationDialog(context, (){
+                _bloc.add(InitGoogleSingleSignUpEvent(state.data));
+              });
             }
           },
           builder: (BuildContext context, state) {

@@ -8,6 +8,7 @@ import 'package:single_sign_in_firestore/domain/repositories/repository.dart';
 import 'package:single_sign_in_firestore/domain/usecases/authenticate_with_google_usecase.dart';
 import 'package:single_sign_in_firestore/domain/usecases/signin_google_usecase.dart';
 import 'package:single_sign_in_firestore/domain/usecases/signout_google_account_usecase.dart';
+import 'package:single_sign_in_firestore/domain/usecases/signup_google_usecase.dart';
 import 'package:single_sign_in_firestore/presentation/bloc/nav_bloc/nav_bloc.dart';
 
 import 'presentation/bloc/auth_bloc/auth_bloc.dart';
@@ -20,12 +21,14 @@ Future<void> init() async {
   getIt.registerLazySingleton(() => AuthBloc(
       getIt(),
       getIt(),
+      getIt(),
       getIt()
   ));
   getIt.registerLazySingleton(() => NavBloc(getIt()));
 
   //Use cases
   getIt.registerLazySingleton(() => SignInGoogleUseCase(getIt()));
+  getIt.registerLazySingleton(() => SignUpGoogleUseCase(getIt()));
   getIt.registerLazySingleton(() => AuthenticateWithGoogleUseCase(getIt()));
   getIt.registerLazySingleton(() => SignOutGoogleAccountUseCase(getIt()));
 

@@ -8,6 +8,7 @@ import 'package:single_sign_in_firestore/domain/entities/single_sign_in_resp.dar
 import 'package:single_sign_in_firestore/domain/usecases/authenticate_with_google_usecase.dart';
 import 'package:single_sign_in_firestore/domain/usecases/signin_google_usecase.dart';
 import 'package:single_sign_in_firestore/domain/usecases/signout_google_account_usecase.dart';
+import 'package:single_sign_in_firestore/domain/usecases/signup_google_usecase.dart';
 import 'package:single_sign_in_firestore/presentation/bloc/auth_bloc/auth_event.dart';
 import 'package:single_sign_in_firestore/presentation/bloc/auth_bloc/auth_state.dart';
 import 'package:dartz/dartz.dart';
@@ -17,9 +18,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   // Google Sign in
   AuthenticateWithGoogleUseCase authenticateWithGoogleUseCase;
   SignInGoogleUseCase signInGoogleUseCase;
+  SignUpGoogleUseCase signUpGoogleUseCase;
   SignOutGoogleAccountUseCase signOutGoogleAccountUseCase;
 
-  AuthBloc(this.authenticateWithGoogleUseCase, this.signInGoogleUseCase, this.signOutGoogleAccountUseCase);
+  AuthBloc(this.authenticateWithGoogleUseCase, this.signInGoogleUseCase, this.signUpGoogleUseCase, this.signOutGoogleAccountUseCase);
 
   @override
   AuthState get initialState => InitialSignInState();
@@ -41,6 +43,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
       String userToken = event.data;
       final res = await signInGoogleUseCase(userToken);
+
+      yield res.fold(
+            (failure) => _getError(failure),
+            (data) => _getSingleSignInLoginState(data),
+      );
+    } else if (event is InitGoogleSingleSignUpEvent) {
+      String userToken = event.data;
+      final res = await signUpGoogleUseCase(userToken);
 
       yield res.fold(
             (failure) => _getError(failure),
