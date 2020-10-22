@@ -103,6 +103,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthState _getError(BaseFailure failure) {
     print(failure);
 
+    if (failure is FireStoreFailure) {
+      signOutGoogleAccountUseCase();
+      return new ErrorUserNotFoundState(failure.data);
+    }
+
     switch (failure.code) {
       case 401:
         signOutGoogleAccountUseCase();

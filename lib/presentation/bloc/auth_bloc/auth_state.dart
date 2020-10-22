@@ -43,6 +43,14 @@ class GoogleLoggedInState extends AuthState {
   List<Object> get props => null;
 }
 
+class ErrorUserNotFoundState extends AuthState {
+  final String data; // failed token
+  ErrorUserNotFoundState(this.data);
+
+  @override
+  List<Object> get props => null;
+}
+
 class ErrorGoogleLoginState extends AuthState {
   final ErrorEntity data;
   ErrorGoogleLoginState(this.data);

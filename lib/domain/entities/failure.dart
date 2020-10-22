@@ -25,3 +25,13 @@ class BaseFailure extends Failure {
 }
 
 class CacheFailure extends BaseFailure {}
+
+class FireStoreFailure extends BaseFailure {
+
+  final String data;
+  final String message;
+
+  FireStoreFailure(this.data, this.message)
+      : super(1000, message);
+
+}

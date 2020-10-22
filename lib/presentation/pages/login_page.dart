@@ -37,6 +37,8 @@ class _LoginPageState extends State<LoginPage> {
                 print("show an error here");
             } else if (state is GoogleLogginInState) {
               _bloc.add(GoogleLogginInEvent(state.data));
+            } else if (state is ErrorUserNotFoundState) {
+              //show an alert here about do you want to register a new user ?
             }
           },
           builder: (BuildContext context, state) {

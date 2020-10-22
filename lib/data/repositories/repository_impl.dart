@@ -36,6 +36,9 @@ class RepositoryImpl implements Repository {
       return Right(userResp);
     } catch (e) {
       print('Failure $e');
+      if (e is StateError) {
+        return Left(FireStoreFailure(token, e.message));
+      }
       return Left(e);
     }
   }
