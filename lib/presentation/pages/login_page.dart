@@ -35,6 +35,8 @@ class _LoginPageState extends State<LoginPage> {
             // do stuff here based on BlocA's state
             if (state is ErrorGoogleLoginState) {
                 print("show an error here");
+            } else if (state is GoogleLogginInState) {
+              _bloc.add(GoogleLogginInEvent(state.data));
             }
           },
           builder: (BuildContext context, state) {

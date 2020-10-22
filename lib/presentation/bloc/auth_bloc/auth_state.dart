@@ -27,9 +27,17 @@ class GoogleRegisteredState extends AuthState {
   List<Object> get props => null;
 }
 
-class GoogleLogInState extends AuthState {
+class GoogleLogginInState extends AuthState {
   final String data; //tokenId
-  GoogleLogInState(this.data);
+  GoogleLogginInState(this.data);
+
+  @override
+  List<Object> get props => null;
+}
+
+class GoogleLoggedInState extends AuthState {
+  final String data; //tokenId
+  GoogleLoggedInState(this.data);
 
   @override
   List<Object> get props => null;

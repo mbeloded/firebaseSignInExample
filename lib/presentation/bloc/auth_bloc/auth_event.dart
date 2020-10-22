@@ -12,10 +12,10 @@ class InitGoogleSingleSignIn extends AuthEvent {
   List<Object> get props => null;
 }
 
-class GoogleLoginEvent extends AuthEvent {
+class GoogleLogginInEvent extends AuthEvent {
   final String data; // userToken
 
-  GoogleLoginEvent(
+  GoogleLogginInEvent(
       this.data,
       );
 

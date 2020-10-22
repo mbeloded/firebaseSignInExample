@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:single_sign_in_firestore/injection_container.dart';
 import 'package:single_sign_in_firestore/presentation/bloc/nav_bloc/nav_bloc.dart';
@@ -9,6 +10,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await di.init();
+
+  await Firebase.initializeApp();
 
   runApp(MyApp());
 }
