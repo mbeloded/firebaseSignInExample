@@ -2,6 +2,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'package:single_sign_in_firestore/domain/entities/error_dto.dart';
+import 'package:single_sign_in_firestore/domain/entities/single_sign_in_resp.dart';
 import 'package:single_sign_in_firestore/domain/entities/user_entity.dart';
 
 @immutable
@@ -19,6 +20,11 @@ class AuthLoadingState extends AuthState {
   List<Object> get props => null;
 }
 
+class LoggedOutState extends AuthState {
+  @override
+  List<Object> get props => null;
+}
+
 class GoogleRegisteredState extends AuthState {
   final UserEntity data;
   GoogleRegisteredState(this.data);
@@ -28,7 +34,7 @@ class GoogleRegisteredState extends AuthState {
 }
 
 class GoogleLogginInState extends AuthState {
-  final String data; //tokenId
+  final SingleSignInDto data; //user data with token & user info
   GoogleLogginInState(this.data);
 
   @override
@@ -44,7 +50,7 @@ class GoogleLoggedInState extends AuthState {
 }
 
 class ErrorUserNotFoundState extends AuthState {
-  final String data; // failed token
+  final SingleSignInDto data; // failed token
   ErrorUserNotFoundState(this.data);
 
   @override

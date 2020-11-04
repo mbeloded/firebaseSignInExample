@@ -8,15 +8,13 @@ part 'user_entity.g.dart';
 @JsonSerializable(explicitToJson: true)
 class UserEntity extends Equatable {
   final String userId;
-  final String firstName;
-  final String lastName;
+  final String name;
   final String email;
   int dob;
 
   UserEntity(this.userId,
   [
-    this.firstName,
-    this.lastName,
+    this.name,
     this.email,
     this.dob
   ]
@@ -25,8 +23,7 @@ class UserEntity extends Equatable {
   @override
   List<Object> get props => [
     userId,
-    firstName,
-    lastName,
+    name,
     email,
     dob
   ];

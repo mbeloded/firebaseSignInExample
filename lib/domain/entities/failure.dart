@@ -26,9 +26,17 @@ class BaseFailure extends Failure {
 
 class CacheFailure extends BaseFailure {}
 
+class UserNotCreatedFailure extends BaseFailure {
+
+  final String message;
+
+  UserNotCreatedFailure(this.message)
+      : super(405, message);
+}
+
 class FireStoreFailure extends BaseFailure {
 
-  final String data;
+  final dynamic data;
   final String message;
 
   FireStoreFailure(this.data, this.message)

@@ -13,6 +13,14 @@ class NavPopCurrentScreen extends NavEvent {
   List<Object> get props => null;
 }
 
+class NavLogin extends NavEvent {
+
+  NavLogin([args]) : super(args);
+
+  @override
+  List<Object> get props => [args];
+}
+
 class NavHome extends NavEvent {
 
   NavHome([args]) : super(args);

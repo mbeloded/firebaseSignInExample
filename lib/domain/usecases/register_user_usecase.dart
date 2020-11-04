@@ -4,14 +4,14 @@ import 'package:single_sign_in_firestore/domain/entities/failure.dart';
 import 'package:single_sign_in_firestore/domain/entities/single_sign_in_resp.dart';
 import 'package:single_sign_in_firestore/domain/repositories/repository.dart';
 
-class SignUpGoogleUseCase {
+class RegisterUserUseCase {
   final Repository repository;
 
-  SignUpGoogleUseCase(this.repository);
+  RegisterUserUseCase(this.repository);
 
   Future<Either<Failure, SingleSignInDto>> call(
-      String data,
+      SingleSignInDto data,
       ) {
-    return repository.googleSignIn(data);
+    return repository.createUser(data);
   }
 }

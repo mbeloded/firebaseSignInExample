@@ -9,6 +9,8 @@ abstract class Repository {
 
   ///User
   Future<Either<Failure, UserEntity>> getCurrentUser();
+  Future<bool> checkIsUserPresent(String token);
+  Future<Either<Failure, SingleSignInDto>> createUser(SingleSignInDto userData);
 
   Future<Either<Failure, SingleSignInDto>> googleSignIn(String token);
   Future<GoogleSignInAccount> authenticateWithGoogle();

@@ -13,3 +13,12 @@ class InitHomeEvent extends HomeEvent {
   List<Object> get props => [];
 
 }
+
+class HomeLogoutEvent extends HomeEvent {
+
+  HomeLogoutEvent();
+
+  @override
+  List<Object> get props => [];
+
+}

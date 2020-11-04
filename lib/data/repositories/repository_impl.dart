@@ -17,6 +17,11 @@ class RepositoryImpl implements Repository {
   RepositoryImpl({this.localDataSource, this.remoteDataSource});
 
   @override
+  Future<bool> checkIsUserPresent(String token) async {
+    return remoteDataSource.checkIsUserPresent(token);
+  }
+
+  @override
   Future<Either<Failure, UserEntity>> getCurrentUser() async {
     try {
       return Right(await localDataSource.getCurrentUser());
@@ -27,11 +32,23 @@ class RepositoryImpl implements Repository {
     }
   }
 
+  @override
+  Future<Either<Failure, SingleSignInDto>> createUser(SingleSignInDto userData) async {
+
+    try {
+      localDataSource.saveCurrentUser(userData.profileInfo);
+      return Right(await remoteDataSource.createUser(userData));
+    } catch (e) {
+      return Left(UserNotCreatedFailure(e));
+    }
+
+  }
+
   Future<Either<Failure, SingleSignInDto>> googleSignIn(String token) async {
 
     try {
       //send token in request to FireStore and check the resp. in case user is there - return the userData obj
-      var userResp = await remoteDataSource.googleSignIn(token);
+      var userResp = await remoteDataSource.getUser(token);
 
       return Right(userResp);
     } catch (e) {

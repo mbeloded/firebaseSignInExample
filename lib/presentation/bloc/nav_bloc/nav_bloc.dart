@@ -20,6 +20,11 @@ class NavBloc extends Bloc<NavEvent, dynamic> {
   Stream<dynamic> mapEventToState(NavEvent event) async* {
     if (event is NavPopCurrentScreen) {
       navigatorKey.currentState.pop();
+    } else if (event is NavLogin) {
+
+        navigatorKey.currentState
+            .pushNamedAndRemoveUntil(LoginPage.routeName, (route) => route.isFirst);
+
     } else if (event is NavHome) {
       navigatorKey.currentState
           .pushNamed(HomePage.routeName, arguments: event.args);
